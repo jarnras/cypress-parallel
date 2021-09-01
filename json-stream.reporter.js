@@ -12,7 +12,9 @@ var fs = require('fs');
 
 const { resultsPath } = require('./shared-config');
 
-const { EVENT_SUITE_END } = constants;
+const {
+  EVENT_RUN_END,
+} = constants;
 
 /**
  * Expose `JSONStream`.
@@ -42,7 +44,7 @@ function JSONStreamCustom(runner, options) {
     };
   }
 
-  runner.on(EVENT_SUITE_END, function () {
+  runner.on(EVENT_RUN_END, function () {
     writeFile(cleanStatistics());
   });
 }
